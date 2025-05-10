@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessibility Widget</title>
+  
+  <!-- Google Fonts for Comfortaa -->
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Widget CSS -->
+  <link rel="stylesheet" href="css/accessibility.css">
+</head>
+<body>
+  <!-- Demo Content (remove in production) -->
+  <div style="padding: 20px; max-width: 800px; margin: 0 auto;">
+    <h1>Accessibility Widget Demo</h1> 
+    <p>This page demonstrates the accessibility widget. Click the "Accessibility" button in the bottom right corner to activate it.</p>
+    
+    <h2>Sample Content</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec urna vel nunc eleifend feugiat. Cras tincidunt, 
+    nunc at tempor tincidunt, libero justo volutpat ligula, a faucibus diam velit vel libero. Duis sit amet dignissim 
+    magna, non feugiat purus. Nulla facilisi. Etiam ut mi eu dui volutpat consequat.</p>
+    
+    <p>Vivamus fermentum dui a tincidunt lacinia. Donec convallis vel nulla a lacinia. Sed cursus vestibulum vulputate. 
+    Donec eget ex ut magna sodales rhoncus. Cras pretium, nisi quis feugiat consectetur, est velit vehicula urna, 
+    sit amet pulvinar neque tellus quis ex.</p>
+
+    <!-- Add this HTML to your page (outside the accessibility widget) -->
+    <div class="color-test-container">
+      <h3>Color Test for Dark Mode</h3>
+      <p class="red-text">This text is RED and should appear darker when dark mode is active.</p>
+      <p class="green-text">This text is GREEN and should appear darker when dark mode is active.</p>
+      <p class="orange-text">This text is ORANGE and should appear darker when dark mode is active.</p>
+      
+      <div class="color-blocks">
+        <div style="display: inline-block; width: 50px; height: 50px; background-color: #ff0000; margin-right: 10px;"></div>
+        <div style="display: inline-block; width: 50px; height: 50px; background-color: #00cc00; margin-right: 10px;"></div>
+        <div style="display: inline-block; width: 50px; height: 50px; background-color: #0000ff; margin-right: 10px;"></div>
+        <div style="display: inline-block; width: 50px; height: 50px; background-color: #ffff00;"></div>
+      </div>
+    </div>
+    
+    <!-- Simple text sample -->
+    <p class="sample-red-text">This is a sample RED text to test theme mode.</p>
+    
+    <!-- Links test -->
+    <p>Test some <a href="#">links</a> and <a href="#">navigation elements</a> to see how they appear in different themes.</p>
+  </div>
+
+  <!-- Accessibility Widget HTML -->
+  <div id="accessibility-widget" aria-label="Accessibility options">
+    <button id="accessibility-toggle" aria-expanded="false" aria-controls="accessibility-panel">
+      <span>Accessibility</span>
+    </button>
+    <div id="accessibility-panel">
+      <div class="panel-header">
+        <h2>Accessibility Menu</h2>
+        <button id="close-panel" aria-label="Close accessibility menu">×</button>
+      </div>
+      <div class="options-grid">
+        <!-- Text Size -->
+        <div class="option-card">
+          <button class="option-button" id="text-size-btn">
+            <div class="option-icon">T↕</div>
+            <div class="option-label">Text Size</div>
+          </button>
+        </div>
+        
+        <!-- Text Spacing -->
+        <div class="option-card">
+          <button class="option-button" id="text-spacing-btn">
+            <div class="option-icon">←→</div>
+            <div class="option-label">Text Spacing</div>
+          </button>
+        </div>
+        
+        <!-- Dyslexia Font -->
+        <div class="option-card">
+          <button class="option-button" id="dyslexia-font-btn">
+            <div class="option-icon">Df</div>
+            <div class="option-label">Dyslexia Font</div>
+          </button>
+        </div>
+        
+        <!-- Dark/Light Mode -->
+        <div class="option-card">
+          <button class="option-button" id="theme-mode-btn">
+            <div class="option-icon">🌓</div>
+            <div class="option-label">Dark Mode</div>
+          </button>
+        </div>
+        
+        <!-- Line Height -->
+        <div class="option-card">
+          <button class="option-button" id="line-height-btn">
+            <div class="option-icon">≡</div>
+            <div class="option-label">Line Height</div>
+          </button>
+        </div>
+        
+        <!-- Full Page Mask -->
+        <div class="option-card">
+          <button class="option-button" id="page-mask-btn">
+            <div class="option-icon">▭</div>
+            <div class="option-label">Page Mask</div>
+          </button>
+        </div>
+        
+        <!-- Read Text -->
+        <div class="option-card">
+          <button class="option-button" id="speak-page">
+            <div class="option-icon">🔊</div>
+            <div class="option-label">Read Text</div>
+          </button>
+        </div>
+        
+        <!-- Stop Speech -->
+        <div class="option-card">
+          <button class="option-button" id="stop-speaking">
+            <div class="option-icon">🔇</div>
+            <div class="option-label">Stop Speech</div>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Text Size Controls (hidden by default) -->
+      <div class="text-size-controls">
+        <label for="font-size-slider">Font Size: <span id="font-size-value">120%</span></label>
+        <input type="range" id="font-size-slider" min="100" max="200" value="120" step="10">
+      </div>
+      
+      <!-- Text Spacing Controls (hidden by default) -->
+      <div class="text-spacing-controls">
+        <label for="letter-spacing-slider">Letter Spacing: <span id="letter-spacing-value">0.12em</span></label>
+        <input type="range" id="letter-spacing-slider" min="0" max="30" value="12" step="2">
+        <label for="word-spacing-slider">Word Spacing: <span id="word-spacing-value">0.16em</span></label>
+        <input type="range" id="word-spacing-slider" min="0" max="40" value="16" step="2">
+      </div>
+      
+      <!-- Line Height Controls (hidden by default) -->
+      <div class="line-height-controls">
+        <label for="line-height-slider">Line Height: <span id="line-height-value">1.8</span></label>
+        <input type="range" id="line-height-slider" min="10" max="30" value="18" step="1">
+      </div>
+      
+      <!-- Reading Mask Controls (hidden by default) -->
+      <div class="page-mask-controls">
+        <label for="mask-opacity-slider">Mask Opacity: <span id="mask-opacity-value">50%</span></label>
+        <input type="range" id="mask-opacity-slider" min="10" max="90" value="50" step="5">
+        <div class="mask-color-options">
+          <button class="mask-color" data-color="rgba(0, 0, 0, 0.5)" style="background-color: rgba(0, 0, 0, 0.5);" aria-label="Dark mask"></button>
+          <button class="mask-color" data-color="rgba(255, 255, 0, 0.5)" style="background-color: rgba(255, 255, 0, 0.5);" aria-label="Yellow mask"></button>
+          <button class="mask-color" data-color="rgba(0, 255, 255, 0.5)" style="background-color: rgba(0, 255, 255, 0.5);" aria-label="Cyan mask"></button>
+        </div>
+      </div>
+      
+      <!-- TTS Controls -->
+      <div class="tts-controls">
+        <div class="voice-options">
+          <label>Voice Type:</label>
+          <div class="voice-buttons">
+            <button class="voice-option" data-voice="female">Female</button>
+            <button class="voice-option active" data-voice="male">Male</button>
+          </div>
+        </div>
+        <div class="tts-sliders">
+          <div class="tts-slider-control">
+            <label for="tts-rate">Speed:</label>
+            <input type="range" id="tts-rate" min="0.5" max="2" step="0.1" value="1">
+            <span id="tts-rate-value">1.0</span>
+          </div>
+          <div class="tts-slider-control">
+            <label for="tts-pitch">Pitch:</label>
+            <input type="range" id="tts-pitch" min="0.5" max="2" step="0.1" value="1">
+            <span id="tts-pitch-value">1.0</span>
+          </div>
+        </div>
+      </div>
+      
+      <button id="reset-accessibility">Reset All</button>
+    </div>
+  </div>
+
+  <!-- Reading Mask Element -->
+  <div id="page-mask"></div>
+
+  <!-- Highlight container for currently spoken text -->
+  <div id="speech-highlight-container"></div>
+
+  <!-- Text selection instructions tooltip (hidden by default) -->
+  <div class="selection-instructions">
+    Select text and click "Read Text" to have it read aloud.
+  </div>
+  
+  <!-- Widget JavaScript -->
+  <script src="js/accessibility.js"></script>
+</body>
+</html>
